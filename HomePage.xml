@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="HomePage">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../program files/MyEclipse/MyEclipse 10"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.5"/>
+    <property name="source" value="1.5"/>
+
+    <path id="Web App Libraries.libraryclasspath">
+        <pathelement location="WebRoot/WEB-INF/lib/commons-dbcp-1.4.jar"/>
+        <pathelement location="WebRoot/WEB-INF/lib/commons-pool-1.6.jar"/>
+        <pathelement location="WebRoot/WEB-INF/lib/json.jar"/>
+        <pathelement location="WebRoot/WEB-INF/lib/mysql-connector-java-5.1.30-bin.jar"/>
+        <pathelement location="WebRoot/WEB-INF/lib/ojdbc6.jar"/>
+    </path>
+    <path id="EAR Libraries.libraryclasspath"/>
+    <path id="HomePage.classpath">
+        <pathelement location="WebRoot/WEB-INF/classes"/>
+        <path refid="Java EE 5 Libraries.libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <pathelement location="WebRoot/WEB-INF/lib/commons-dbcp-1.4.jar"/>
+        <pathelement location="WebRoot/WEB-INF/lib/commons-pool-1.6.jar"/>
+        <pathelement location="WebRoot/WEB-INF/lib/json.jar"/>
+        <pathelement location="WebRoot/WEB-INF/lib/ojdbc6.jar"/>
+        <pathelement location="WebRoot/WEB-INF/lib/mysql-connector-java-5.1.30-bin.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="WebRoot/WEB-INF/classes"/>
+        <copy includeemptydirs="false" todir="WebRoot/WEB-INF/classes">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="WebRoot/WEB-INF/classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build2"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="WebRoot/WEB-INF/classes" source="${source}" target="${target}"  includeantruntime="on" >
+            <src path="src"/>
+            <classpath refid="HomePage.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+     <property name="warFileName" value="HomePage.war"></property>  
+    <target name="build">
+        <delete dir="${basedir}/${warFileName}" />  
+          <war destfile="${basedir}/${warFileName}" webxml="${basedir}/WebRoot/WEB-INF/web.xml">  
+                    <!-- 将非jar和非class文件拷贝到war包的对应路径下。 -->  
+                    <fileset dir="${basedir}/WebRoot">  
+                        <include name="**/**.*" />  
+                        <exclude name="**/*.jar"/>  
+                        <exclude name="**/*.class"/>  
+                    </fileset>  
+                    <!-- 将jar和class文件拷贝到war包的对应路径下。 -->  
+                    <lib dir="${basedir}/WebRoot/WEB-INF/lib" />  
+                    <classes dir="${basedir}/build" />  
+                </war>      
+    </target>
+</project>
+

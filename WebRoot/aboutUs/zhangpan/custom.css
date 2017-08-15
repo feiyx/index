@@ -1,0 +1,95 @@
+/** Your theme modifications here **/
+#top .social a {
+    color: #fff;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    line-height: 26px;
+    font-size: 15px;
+    text-align: center;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    vertical-align: bottom;
+    background-color: #555555;
+}
+#top .social a i {
+    vertical-align: bottom;
+    line-height: 30px;
+}
+
+#top .social a.code:hover {
+    background-color: #c21f25;
+}
+
+#top .social a.weibo:hover {
+    background-color: #4460ae;
+}
+
+#top .social a.weixin:hover {
+    background-color: #3cf;
+}
+
+#top .social a.twitter:hover {
+    background-color: #cd4378;
+}
+
+
+#top .social a.email:hover {
+    background-color: #4a7f45;
+}
+
+/* ---------------------------------------------- /*
+ * Scroll to top
+/* ---------------------------------------------- */
+.scroll-up {
+    position: fixed;
+    display: none;
+    z-index: 999;
+    bottom: 1.8em;
+    right: 1.8em;
+}
+
+.scroll-up a {
+    background-color: #68c3a3;
+    display: block;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    line-height: 28px;
+}
+
+.scroll-up a:hover,
+.scroll-up a:active {
+    background-color: rgba(235, 235, 235, .8);
+    color: #222;
+}
+
+pre {
+    display: block;
+    padding: 0px;
+    margin: 0px 0px 30px 0px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: transparent;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: transparent;
+    border: 0px solid #ccc;
+    border-radius: 0px;
+}
+pre code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+.margin-height{
+    margin-bottom: 30px;
+}

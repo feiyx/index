@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>222.html</title>
+
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<style type="text/css">
+/*测试用的高度*/
+body {
+	height: 3000px;
+}
+
+
+/*position:absolute;用于元素的定位*/
+#roll {
+	margin: 0;
+	padding: 0;
+	width: 100px;
+	height: 200px;
+	background: #99CC00;
+	position: absolute;
+}
+</style>
+</head>
+
+<body>
+	<div id="roll"></div>
+</body>
+<script type="text/javascript">
+	var roll = document.getElementById('roll'), initX = 0, initY, compY, sp = 15,
+	//可调整时间间隔，步进值不宜过大，不然IE下有点闪屏； 
+	timeGap = 5, doc = document.documentElement, docBody = document.body;
+	compY = initY = 200;
+	roll.style.right = initX + "px";;
+	(function() {
+		var curScrollTop = (doc.scrollTop || docBody.scrollTop || 0)
+				- (doc.clientTop || docBody.clientTop || 0);
+		//每次comP的值都不一样；直到roll.style.top===doc.scrollTop+initY； 
+		compY += (curScrollTop + initY - compY) / sp;
+		roll.style.top = Math.ceil(compY) + "px";
+		setTimeout(arguments.callee, timeGap);
+	})();
+</script>
+</html>
